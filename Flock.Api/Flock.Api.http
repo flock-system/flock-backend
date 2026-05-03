@@ -1,0 +1,6 @@
+@Flock.Api_HostAddress = http://localhost:5231
+
+GET {{Flock.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
