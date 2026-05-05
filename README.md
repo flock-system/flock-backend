@@ -1,4 +1,4 @@
-# 🐑 Flock
+# 🐑 Flock [En]
 
 > A simple platform designed to help churches manage members and care for people.
 
@@ -129,3 +129,137 @@ It’s about helping churches care for people better.
 ## 📎 License
 
 MIT (or define later)
+
+---
+
+# 🐑 Flock [pt-br]
+
+> Uma plataforma simples para ajudar igrejas a gerenciar membros e cuidar de pessoas.
+
+---
+
+## 📖 Sobre o Projeto
+
+O Flock é uma plataforma SaaS criada para ajudar igrejas pequenas e médias a organizarem seus membros e cuidarem de pessoas de forma mais eficiente.
+
+Hoje, muitas igrejas ainda utilizam cadernos ou planilhas, o que acaba gerando desorganização e dificuldade no acompanhamento das pessoas.
+O Flock surge para simplificar esse processo com um sistema moderno, simples e fácil de usar.
+
+---
+
+## 🎯 Objetivo
+
+Criar um produto simples, útil e escalável que:
+
+* Substitua controles manuais (papel/Excel)
+* Ajude líderes a acompanharem pessoas
+* Possa evoluir para um SaaS comercial
+* Sirva como um projeto real de portfólio
+
+---
+
+## 🚀 Escopo Atual (MVP)
+
+A primeira versão foca em:
+
+* Cadastro de membros
+* Listagem de membros
+* Validações básicas
+* Estrutura simples de dados
+
+> ⚠️ O MVP é propositalmente enxuto para validar o uso real antes de evoluir.
+
+---
+
+## 🧩 Próximas Funcionalidades (Roadmap)
+
+* Status de membros (ativo, inativo, visitante)
+* Histórico de acompanhamento
+* Gestão de grupos / células
+* Relatórios e insights
+* Autenticação e suporte a múltiplas igrejas
+
+---
+
+## 🏗️ Arquitetura
+
+O projeto segue uma **arquitetura em camadas inspirada na Clean Architecture**, com foco em separação de responsabilidades e escalabilidade.
+
+### 📦 Camadas
+
+* **API** → Entrada da aplicação (Controllers, HTTP)
+* **Application** → Casos de uso e regras de aplicação
+* **Domain** → Entidades e regras de negócio
+* **Infrastructure** → Banco de dados e integrações externas
+
+---
+
+### 🔄 Fluxo
+
+Usuário → API → Application → Domain → Infrastructure → Banco de Dados
+
+---
+
+## 🛠️ Tecnologias
+
+* Backend: .NET (ASP.NET Core Web API)
+* Banco de dados: PostgreSQL
+* ORM: Entity Framework Core
+
+---
+
+## 📂 Estrutura do Projeto
+
+```bash id="k6ay9v"
+/src
+ ├── Flock.Api
+ ├── Flock.Application
+ ├── Flock.Domain
+ ├── Flock.Infrastructure
+```
+
+---
+
+## 🔀 Fluxo de Git
+
+* `main` → Produção
+* `develop` → Desenvolvimento
+* `feature/*` → Novas funcionalidades
+
+Pull Requests são obrigatórios para merge na branch `main`.
+
+---
+
+## 📋 Gerenciamento do Projeto
+
+Utilizamos Issues e Projects do GitHub para organizar:
+
+* User Stories (funcionalidades de negócio)
+* Tasks (tarefas técnicas)
+* Execução baseada em sprints
+
+---
+
+## 🧪 Status Atual
+
+🚧 Em desenvolvimento — fase de MVP
+
+---
+
+## 🤝 Contribuição
+
+Este projeto está sendo desenvolvido como uma iniciativa de aprendizado e construção de produto real.
+
+---
+
+## 📌 Visão
+
+O Flock não é apenas sobre gerenciar dados.
+
+É sobre ajudar igrejas a cuidarem melhor de pessoas.
+
+---
+
+## 📎 Licença
+
+MIT (ou definir futuramente)
