@@ -11,4 +11,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Flock.Application\Flock.Application.csproj" />
+    <ProjectReference Include="..\Flock.Infrastructure\Flock.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

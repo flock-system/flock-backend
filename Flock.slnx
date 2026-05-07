@@ -1,3 +1,6 @@
 <Solution>
   <Project Path="Flock.Api/Flock.Api.csproj" />
+  <Project Path="Flock.Application/Flock.Application.csproj" />
+  <Project Path="Flock.Domain/Flock.Domain.csproj" />
+  <Project Path="Flock.Infrastructure/Flock.Infrastructure.csproj" />
 </Solution>
