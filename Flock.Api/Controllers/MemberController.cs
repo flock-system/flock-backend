@@ -13,9 +13,9 @@ namespace Flock.Api.Controllers
     {
 
         [HttpPost("create")]
-        public IActionResult CreateMember()
+        public IActionResult CreateMember(string name)
         {
-            string name = "joão";
+            
 
             return Ok(name);
         }

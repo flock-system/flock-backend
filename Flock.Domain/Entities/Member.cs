@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Flock.Domain.Entities
 {
-    internal class Member
+    public class Member
     {
         public int id { get; set; }
 
