@@ -57,6 +57,20 @@ namespace Flock.Api.Controllers
         }
 
 
+        [HttpGet("search")]
+        public IActionResult SearchMember(string query = "")
+        {
+           
+            //Verificando se a query digitada consta em algum dos campos de identificação do usuário
+            var members = _context.Members.Where(q => q.firstName.Contains(query) || q.lastName.Contains(query) || q.id.ToString().Equals(query)).ToList();
+
+            //Se o usuário não digitar nada no campo, retorna uma lista de todos os usuários
+            if (query.Equals("")) members = _context.Members.ToList();
+
+            return Ok(members);
+
+        }
+
         private static bool validateDateOfBirth(string input)
         {
             string[] formats = { "dd/MM/yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "yyyy/MM/dd" };
