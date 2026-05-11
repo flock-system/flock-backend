@@ -27,6 +27,7 @@ namespace Flock.Infrastructure.Persistance
                 entity.ToTable("members");
                 entity.HasKey(m => m.id);
 
+                entity.Property(m => m.id).ValueGeneratedOnAdd();
                 entity.Property(m => m.firstName).IsRequired().HasMaxLength(25);
                 entity.Property(m => m.lastName).IsRequired().HasMaxLength(25);
                 entity.Property(m => m.dateOfBirth).IsRequired().HasColumnType("date");
