@@ -12,7 +12,7 @@ namespace Flock.Domain.Entities
 
         public string lastName { get; set; }
 
-        public string age { get; set; }
+        public DateOnly dateOfBirth { get; set; }
 
 
     }

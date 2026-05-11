@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Flock.Domain.Entities;
 
+
 namespace Flock.Infrastructure.Persistance
 {
     public class AppDbContext : DbContext
@@ -28,7 +29,7 @@ namespace Flock.Infrastructure.Persistance
 
                 entity.Property(m => m.firstName).IsRequired().HasMaxLength(25);
                 entity.Property(m => m.lastName).IsRequired().HasMaxLength(25);
-                entity.Property(m => m.age).IsRequired().HasMaxLength(3);
+                entity.Property(m => m.dateOfBirth).IsRequired().HasColumnType("date");
                       
             });
         }
