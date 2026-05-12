@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Flock.Domain\Flock.Domain.csproj" />
+    <ProjectReference Include="..\Flock.Infrastructure\Flock.Infrastructure.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
