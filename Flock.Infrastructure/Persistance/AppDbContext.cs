@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Flock.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Flock.Domain.Entities;
 
 
 namespace Flock.Infrastructure.Persistance
@@ -31,7 +28,6 @@ namespace Flock.Infrastructure.Persistance
                 entity.Property(m => m.firstName).IsRequired().HasMaxLength(25);
                 entity.Property(m => m.lastName).IsRequired().HasMaxLength(25);
                 entity.Property(m => m.dateOfBirth).IsRequired().HasColumnType("date");
-                      
             });
         }
     }

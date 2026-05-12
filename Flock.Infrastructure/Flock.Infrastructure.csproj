@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Flock.Application\Flock.Application.csproj" />
     <ProjectReference Include="..\Flock.Domain\Flock.Domain.csproj" />
   </ItemGroup>
 

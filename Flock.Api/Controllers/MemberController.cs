@@ -1,14 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.ComponentModel;
-using Flock.Domain.Entities;
+﻿using Flock.Application.DTOs.Member;
+using Flock.Application.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
-using Flock.Application.DTOs.Member;
-using Flock.Infrastructure.Persistance;
 
 
 namespace Flock.Api.Controllers
@@ -17,59 +10,42 @@ namespace Flock.Api.Controllers
     [Route("api/[controller]")]
     public class MemberController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IMemberApplication _memberApplication;
 
-        public MemberController(AppDbContext context)
+        public MemberController(IMemberApplication memberApplication)
         {
-            _context = context;
+            _memberApplication = memberApplication;
         }
 
         [HttpPost("create")]
         public IActionResult CreateMember([FromBody] CreateMemberRequest request)
         {
-            //Instanciando o membro a ser criado
-            var member = new Member
+            try
             {
-                firstName = request.firstName,
-                lastName = request.lastName,
-                phoneNumber = request.phoneNumber,
-                email = request.email,
-                dateOfBirth = request.dateOfBirth,
-                createdAt = DateOnly.FromDateTime(DateTime.Today),
-                isActive = true,
+                var member = _memberApplication.CreateMember(request);
 
-            };
-            
-            //Fazendo as validações
-            bool isValidName = Regex.IsMatch(member.firstName, @"^[A-Za-zÀ-ÖØ-öø-ÿ\s\-]+$") && Regex.IsMatch(member.lastName, @"^[A-Za-zÀ-ÖØ-öø-ÿ\s\-]+$");
-            bool isValidPhoneNumber = Regex.IsMatch(member.phoneNumber, @"^[0-9()+\s-]+$");
-
-            if (!isValidPhoneNumber) return BadRequest(new { message = "insira um número de telefone válido" });
-            if (!isValidName) return BadRequest(new { message = "insira um nome válido" });
-            if (!validateDateOfBirth(member.dateOfBirth.ToString())) return BadRequest(new { message = "insira uma data válida" });
-
-            //Adicionando no banco e salvando alterações
-            _context.Members.Add(member);
-            _context.SaveChanges();
-
-
-            return Ok(member);
+                return Ok(member);
+            }
+            catch (Exception e)
+            {
+                return BadRequest($"An error occurred while creating the member: {e.Message}");
+            }
         }
 
 
-        [HttpGet("search")]
-        public IActionResult SearchMember(string query = "")
-        {
+        //[HttpGet("search")]
+        //public IActionResult SearchMember(string query = "")
+        //{
            
-            //Verificando se a query digitada consta em algum dos campos de identificação do usuário
-            var members = _context.Members.Where(q => q.firstName.Contains(query) || q.lastName.Contains(query) || q.id.ToString().Equals(query)).ToList();
+        //    //Verificando se a query digitada consta em algum dos campos de identificação do usuário
+        //    var members = _context.Members.Where(q => q.firstName.Contains(query) || q.lastName.Contains(query) || q.id.ToString().Equals(query)).ToList();
 
-            //Se o usuário não digitar nada no campo, retorna uma lista de todos os usuários
-            if (query.Equals("")) members = _context.Members.ToList();
+        //    //Se o usuário não digitar nada no campo, retorna uma lista de todos os usuários
+        //    if (query.Equals("")) members = _context.Members.ToList();
 
-            return Ok(members);
+        //    return Ok(members);
 
-        }
+        //}
 
         private static bool validateDateOfBirth(string input)
         {
