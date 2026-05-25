@@ -21,6 +21,6 @@ namespace Flock.Domain.Entities
 
         public DateOnly createdAt { get; set; }
 
-
+        public int tenantId {  get; set; }
     }
 }

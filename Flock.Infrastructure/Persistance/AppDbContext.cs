@@ -28,6 +28,7 @@ namespace Flock.Infrastructure.Persistance
                 entity.Property(m => m.firstName).IsRequired().HasMaxLength(25);
                 entity.Property(m => m.lastName).IsRequired().HasMaxLength(25);
                 entity.Property(m => m.dateOfBirth).IsRequired().HasColumnType("date");
+                entity.Property(m => m.tenantId).IsRequired();
             });
         }
     }
