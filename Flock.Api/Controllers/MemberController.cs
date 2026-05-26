@@ -1,5 +1,6 @@
 ﻿using Flock.Application.DTOs.Member;
 using Flock.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 
@@ -8,6 +9,7 @@ namespace Flock.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    
     public class MemberController : ControllerBase
     {
         private readonly IMemberApplication _memberApplication;
@@ -18,6 +20,7 @@ namespace Flock.Api.Controllers
         }
 
         [HttpPost("create")]
+        [Authorize]
         public IActionResult CreateMember([FromBody] CreateMemberRequest request)
         {
             try
