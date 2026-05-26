@@ -32,7 +32,7 @@ builder.Services.AddSwaggerGen(options =>
         Scheme = "bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "Digite: Bearer SEU_TOKEN"
+        Description = "type the token"
     });
 
     options.AddSecurityRequirement(document => new OpenApiSecurityRequirement
