@@ -1,7 +1,9 @@
 ﻿using Flock.Application.DTOs.Member;
 using Flock.Application.Interfaces;
+using Flock.Infrastructure.Persistance;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 using System.Globalization;
 
 
@@ -19,13 +21,20 @@ namespace Flock.Api.Controllers
             _memberApplication = memberApplication;
         }
 
+
+
+
         [HttpPost("create")]
         [Authorize]
         public IActionResult CreateMember([FromBody] CreateMemberRequest request)
         {
             try
             {
-                var member = _memberApplication.CreateMember(request);
+                var tenantId = Guid.Parse(
+                    User.FindFirst("TenantId")!.Value);
+
+                var member = _memberApplication.CreateMember(request, tenantId);
+        
 
                 return Ok(member);
             }
@@ -39,7 +48,7 @@ namespace Flock.Api.Controllers
         //[HttpGet("search")]
         //public IActionResult SearchMember(string query = "")
         //{
-           
+
         //    //Verificando se a query digitada consta em algum dos campos de identificação do usuário
         //    var members = _context.Members.Where(q => q.firstName.Contains(query) || q.lastName.Contains(query) || q.id.ToString().Equals(query)).ToList();
 
@@ -50,6 +59,8 @@ namespace Flock.Api.Controllers
 
         //}
 
+
+        
         private static bool validateDateOfBirth(string input)
         {
             string[] formats = { "dd/MM/yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "yyyy/MM/dd" };

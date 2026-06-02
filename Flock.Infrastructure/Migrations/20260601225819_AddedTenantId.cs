@@ -1,21 +1,22 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Flock.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedTenantIdToMember : Migration
+    public partial class AddedTenantId : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
+            migrationBuilder.AddColumn<Guid>(
                 name: "tenantId",
                 table: "members",
-                type: "integer",
+                type: "uuid",
                 nullable: false,
-                defaultValue: 0);
+                defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
         }
 
         /// <inheritdoc />

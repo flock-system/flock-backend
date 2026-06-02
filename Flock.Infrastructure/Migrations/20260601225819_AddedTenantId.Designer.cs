@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Flock.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260525115207_AddedTenantIdToMember")]
-    partial class AddedTenantIdToMember
+    [Migration("20260601225819_AddedTenantId")]
+    partial class AddedTenantId
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,8 +60,8 @@ namespace Flock.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("tenantId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("tenantId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("id");
 

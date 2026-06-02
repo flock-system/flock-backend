@@ -3,6 +3,7 @@ using Flock.Application.Interfaces;
 using Flock.Domain.Entities;
 using Flock.Infrastructure.Interfaces;
 using System.Text.RegularExpressions;
+using System.Security.Claims;
 
 namespace Flock.Application.Application
 {
@@ -15,8 +16,11 @@ namespace Flock.Application.Application
             _memberRepository = memberRepository;
         }
 
-        public Member CreateMember(CreateMemberRequest request)
+        public Member CreateMember(CreateMemberRequest request, Guid tenantId)
         {
+            
+
+            
             var member = new Member
             {
                 firstName = request.firstName,
@@ -26,6 +30,9 @@ namespace Flock.Application.Application
                 dateOfBirth = request.dateOfBirth,
                 createdAt = DateOnly.FromDateTime(DateTime.Today),
                 isActive = true,
+                tenantId = tenantId
+
+
             };
 
             (bool flowControl, Member value) = ValidationMember(member);

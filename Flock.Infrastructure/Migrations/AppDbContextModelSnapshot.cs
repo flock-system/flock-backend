@@ -57,8 +57,8 @@ namespace Flock.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("tenantId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("tenantId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("id");
 

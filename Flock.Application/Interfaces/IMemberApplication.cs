@@ -5,7 +5,7 @@ namespace Flock.Application.Interfaces
 {
     public interface IMemberApplication
     {
-        Member CreateMember(CreateMemberRequest request);
+        Member CreateMember(CreateMemberRequest request, Guid tenantId);
 
     }
 }

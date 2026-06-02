@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Flock.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260511182810_ChangeDateOfBirthToDate")]
-    partial class ChangeDateOfBirthToDate
+    [Migration("20260601225104_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,6 +59,9 @@ namespace Flock.Infrastructure.Migrations
                     b.Property<string>("phoneNumber")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<Guid>("tenantId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("id");
 
