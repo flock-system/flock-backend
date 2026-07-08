@@ -14,7 +14,8 @@ namespace Flock.Infrastructure.Persistance
         {
         }
         public DbSet<Member> Members => Set<Member>();
-
+        public DbSet<Church> Church => Set<Church>();
+        public DbSet<Users> Users => Set<Users>(); 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -43,6 +44,15 @@ namespace Flock.Infrastructure.Persistance
                     entity.Property(c => c.password).IsRequired();
 
                 });
+            modelBuilder.Entity<Users>(entity =>
+            {
+                entity.ToTable("users");
+                entity.HasKey(u => u.id);
+
+                entity.Property(u => u.id).ValueGeneratedOnAdd();
+                entity.Property(u => u.name).IsRequired().HasMaxLength(50);
+                entity.Property(u => u.adminLevel).IsRequired();
+            });
         }
     }
 

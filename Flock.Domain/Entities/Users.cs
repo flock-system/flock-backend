@@ -4,7 +4,15 @@ using System.Text;
 
 namespace Flock.Domain.Entities
 {
-    internal class Users
+    public class Users
     {
+        public int id { get; set; }
+        public string name { get; set; }
+        public int adminLevel { get; set; }
+
+        public Guid tenantId { get; set; }
+        
+
+
     }
 }

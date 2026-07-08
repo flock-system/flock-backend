@@ -57,8 +57,15 @@ public class AuthController : ControllerBase
         {
             token = tokenString
         });
+
+
     }
 
+    [HttpPost("register")]
+    public IActionResult RegisterChurch()
+    {
+        return Ok();
+    }
     
 
 }
