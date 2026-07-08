@@ -68,5 +68,8 @@ namespace Flock.Application.Application
             string[] formats = { "dd/MM/yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "yyyy/MM/dd" };
             return DateTime.TryParseExact(input, formats, null, System.Globalization.DateTimeStyles.None, out _);
         }
+
+        
+
     }
 }

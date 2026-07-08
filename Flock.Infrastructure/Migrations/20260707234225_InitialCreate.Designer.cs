@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Flock.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260601225104_InitialCreate")]
+    [Migration("20260707234225_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

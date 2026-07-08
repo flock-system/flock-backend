@@ -22,6 +22,35 @@ namespace Flock.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Flock.Domain.Entities.Church", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("tenantId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("id");
+
+                    b.ToTable("church", (string)null);
+                });
+
             modelBuilder.Entity("Flock.Domain.Entities.Member", b =>
                 {
                     b.Property<int>("id")

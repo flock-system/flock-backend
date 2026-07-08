@@ -7,5 +7,6 @@ namespace Flock.Application.Interfaces
     {
         Member CreateMember(CreateMemberRequest request, Guid tenantId);
 
+        
     }
 }

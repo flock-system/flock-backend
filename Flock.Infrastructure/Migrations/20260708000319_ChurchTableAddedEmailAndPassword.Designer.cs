@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Flock.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260601225601_RemovedTenantId")]
-    partial class RemovedTenantId
+    [Migration("20260708000319_ChurchTableAddedEmailAndPassword")]
+    partial class ChurchTableAddedEmailAndPassword
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,35 @@ namespace Flock.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Flock.Domain.Entities.Church", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("tenantId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("id");
+
+                    b.ToTable("church", (string)null);
+                });
 
             modelBuilder.Entity("Flock.Domain.Entities.Member", b =>
                 {
@@ -59,6 +88,9 @@ namespace Flock.Infrastructure.Migrations
                     b.Property<string>("phoneNumber")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<Guid>("tenantId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("id");
 

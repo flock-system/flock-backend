@@ -30,6 +30,19 @@ namespace Flock.Infrastructure.Persistance
                 entity.Property(m => m.dateOfBirth).IsRequired().HasColumnType("date");
                 entity.Property(m => m.tenantId).IsRequired();
             });
+
+            modelBuilder.Entity<Church>(entity =>
+                {
+                    entity.ToTable("church");
+                    entity.HasKey(c => c.id);
+
+                    entity.Property(c => c.id).ValueGeneratedOnAdd();
+                    entity.Property(c => c.name).IsRequired().HasMaxLength(50);
+                    entity.Property(c => c.tenantId).IsRequired();
+                    entity.Property(c => c.email).IsRequired();
+                    entity.Property(c => c.password).IsRequired();
+
+                });
         }
     }
 
